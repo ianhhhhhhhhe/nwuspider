@@ -2,22 +2,6 @@
 import scrapy
 from tutorial.items import NWUItem
 
-import glob
-import logging
-import logging.handlers
-
-LOG_FILENAME = 'Spider.out'
-
-my_logger = logging.getLogger('Mylogger')
-my_logger.setLevel (logging.DEBUG)
-
-handler = logging.handlers.RotatingFileHandler(LOG_FILENAME,
-                                               maxBytes = 1048576,
-                                               backupCount = 24,
-                                               )
-my_logger.addHandler(handler)
-
-
 class NwuSpiderSpider(scrapy.Spider):
     name = "nwu"
     allowed_domains = ["nwu.edu.cn"]
