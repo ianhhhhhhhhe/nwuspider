@@ -15,5 +15,4 @@ class NwulabSpiderSpider(scrapy.Spider):
             item['link'] = sel.xpath('strong/a/@href').extract()
             if not item['title']:
                 continue
-            my_logger.info(item)
             yield item

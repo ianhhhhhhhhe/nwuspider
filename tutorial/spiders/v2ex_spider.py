@@ -19,5 +19,4 @@ class DmozSpider(scrapy.Spider):
             item['link'] = sel.xpath('a/@href').extract()
             if not item['title']:
                 continue
-            my_logger.info(item)
             yield item
