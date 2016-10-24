@@ -6,7 +6,7 @@ import glob
 import logging
 import logging.handlers
 
-LOG_FILENAME = 'V2EX_LINKS.out'
+LOG_FILENAME = 'Spider.out'
 
 my_logger = logging.getLogger('Mylogger')
 my_logger.setLevel (logging.DEBUG)
@@ -32,5 +32,7 @@ class DmozSpider(scrapy.Spider):
             item = DmozItem()
             item['title'] = sel.xpath('a/text()').extract()
             item['link'] = sel.xpath('a/@href').extract()
-            yield item
+            if not item['title']:
+                continue
             my_logger.info(item)
+            yield item

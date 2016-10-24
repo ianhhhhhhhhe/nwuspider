@@ -6,7 +6,7 @@ import glob
 import logging
 import logging.handlers
 
-LOG_FILENAME = 'NWU.out'
+LOG_FILENAME = 'Spider.out'
 
 my_logger = logging.getLogger('Mylogger')
 my_logger.setLevel (logging.DEBUG)
@@ -30,5 +30,7 @@ class NwuSpiderSpider(scrapy.Spider):
             item = NWUItem()
             item['title'] = sel.xpath('a/text()').extract()
             item['link'] = sel.xpath('a/@href').extract()
-            my_logger(item)
+            if not item['title']:
+                continue
+            my_logger.info(item)
             yield item
