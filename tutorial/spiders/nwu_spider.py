@@ -14,6 +14,4 @@ class NwuSpiderSpider(scrapy.Spider):
             item = NWUItem()
             item['title'] = sel.xpath('a/text()').extract()
             item['link'] = sel.xpath('a/@href').extract()
-            if not item['title']:
-                continue
             yield item
