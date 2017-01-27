@@ -8,7 +8,6 @@ class NwulabSpiderSpider(scrapy.Spider):
     start_urls = ['http://ipc.nwu.edu.cn/']
 
     def parse(self, response):
-
         for sel in response.xpath('//*[@id="main"]/div/p'):
             item = NWUItem()
             item['title'] = sel.xpath('strong/a/text()').extract()

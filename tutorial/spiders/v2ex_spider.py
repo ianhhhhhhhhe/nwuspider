@@ -12,7 +12,6 @@ class DmozSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-
         for sel in response.xpath('//span[@class="item_title"]'):
             item = DmozItem()
             item['title'] = sel.xpath('a/text()').extract()
