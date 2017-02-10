@@ -2,7 +2,7 @@
 import scrapy
 from tutorial.items import NWUItem
 
-class NwulabSpiderSpider(scrapy.Spider):
+class NWUlabSpider(scrapy.Spider):
     name = "nwulab"
     allowed_domains = ["ipc.nwu.edu.cn"]
     start_urls = ['http://ipc.nwu.edu.cn/']

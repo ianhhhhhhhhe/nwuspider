@@ -15,3 +15,9 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+
+# Logging Config
+LOG_ENABLED = True
+LOG_ENCODING = 'utf-8'
+LOG_FILE = 'v2ex.out'
+LOG_LEVEL = 'INFO'
