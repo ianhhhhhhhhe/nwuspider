@@ -2,7 +2,7 @@
 import scrapy
 from tutorial.items import V2EXItem
 
-class DmozSpider(scrapy.Spider):
+class V2EXSpider(scrapy.Spider):
     name = "v2ex"
     allowed_domains = ["v2ex.com"]
     start_urls = [
@@ -13,7 +13,7 @@ class DmozSpider(scrapy.Spider):
 
     def parse(self, response):
         for sel in response.xpath('//span[@class="item_title"]'):
-            item = DmozItem()
+            item = V2EXItem()
             item['title'] = sel.xpath('a/text()').extract()
             item['link'] = sel.xpath('a/@href').extract()
             if not item['title']:
