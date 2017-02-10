@@ -1,13 +1,17 @@
-from scrapy.crawler import CrawlerProcess
-from tutorial.spiders.v2ex_spider import V2EXSpider
+from twisted.internet import reactor
+
+from scrapy.crawler import CrawlerRunner
+from scrapy.utils.log import configure_logging
+
 from tutorial.spiders.nwu_spider import NWUSpider
 from tutorial.spiders.nwulab_spider import NWUlabSpider
 
-process = CrawlerProcess({
-    'USER_AGENT': 'Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Version/3.1 Safari/525.13'
-})
+configure_logging()
+runner = CrawlerRunner()
+runner.crawl(NWUSpider)
+runner.crawl(NWUlabSpider)
 
-process.crawl(V2EXSpider)
-process.crawl(NWUSpider)
-process.crawl(NWUlabSpider)
-process.start()
+d = runner.join()
+d.addBoth(lambda _: reactor.stop())
+
+reactor.run()

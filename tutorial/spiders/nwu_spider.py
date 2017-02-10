@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import logging
 from tutorial.items import NWUItem
 
 class NWUSpider(scrapy.Spider):
     name = "nwu"
     allowed_domains = ["nwu.edu.cn"]
     start_urls = [
-        "http://www.nwu.edu.cn/",
-    ]
+        'http://www.nwu.edu.cn/',
+        ]
 
     def parse(self, response):
         for sel in response.xpath('//*[@id="newslist"]/li'):
