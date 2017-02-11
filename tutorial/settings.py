@@ -24,3 +24,8 @@ COOKIES_ENABLED = False
 LOG_ENABLED = True
 LOG_ENCODING = 'utf-8'
 LOG_LEVEL = 'INFO'
+
+# Item Pipeline Config
+ITEM_PIPELINES = {
+    'tutorial.pipelines.JsonWriterPipeline': 700,  
+}
