@@ -15,6 +15,9 @@ class JsonWriterPipeline(object):
         self.file.close()
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item)) + "\n"
-        self.file.write(line.encode())
-        return item
+        if item['title']:
+            line = json.dumps(dict(item)) + "\n"
+            self.file.write(line.encode())
+            return item
+        else:
+            raise DropItem("Missing price in %s" % item)
