@@ -58,13 +58,13 @@ LOG_STDOUT = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'jd_spider.middlewares.JdSpiderSpiderMiddleware': 543,
+#    'nwu.middlewares.JdSpiderSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'jd_spider.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'nwu.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
