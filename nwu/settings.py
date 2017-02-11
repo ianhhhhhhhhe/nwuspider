@@ -25,10 +25,10 @@ FEED_URI = 'nwu.csv'
 FEED_FORMAT = 'CSV'
 
 # Logging Config
-LOG_ENABLED = False
+LOG_ENABLED = True
 LOG_ENCODING = 'utf-8'
 LOG_FILE = 'NWUSpider.out'
-LOG_LEVEL = 'DEBUG'
+LOG_LEVEL = 'WARNING'
 LOG_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
 LOG_STDOUT = True
 

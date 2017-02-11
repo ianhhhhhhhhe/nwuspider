@@ -12,10 +12,6 @@ class DmozItem(scrapy.Item):
     link = scrapy.Field()
     desc = scrapy.Field()
 
-class V2EXItem(scrapy.Item):
-	title = scrapy.Field()
-	link = scrapy.Field()
-
 class NWUItem(scrapy.Item):
 	title = scrapy.Field()
 	link = scrapy.Field()
