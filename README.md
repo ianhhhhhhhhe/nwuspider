@@ -17,4 +17,4 @@ Scrapy 1.2.1 or above
 ## How to run
 
 * ```scrapy crawl [spider_name]```
-* ```python main.py # developing, some functions doesn't work```
+* ```python main.py```
