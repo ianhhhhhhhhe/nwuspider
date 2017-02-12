@@ -7,6 +7,8 @@
 
 import json
 
+from scrapy.exceptions import DropItem
+
 class JsonWriterPipeline(object):
     def open_spider(self, spider):
         self.file = open('items.json', 'wb')
@@ -15,9 +17,9 @@ class JsonWriterPipeline(object):
         self.file.close()
 
     def process_item(self, item, spider):
-        if item['title']:
+        if item['title'] and item['link']:
             line = json.dumps(dict(item)) + "\n"
             self.file.write(line.encode())
             return item
         else:
-            raise DropItem("Missing price in %s" % item)
+            raise DropItem("Missing information in %s" % item)
