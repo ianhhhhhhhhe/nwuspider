@@ -9,11 +9,7 @@ from nwu.spiders.nwulab_spider import NWUlabSpider
 
 process = CrawlerProcess(get_project_settings())
 
-runner = CrawlerRunner()
-runner.crawl(NWUSpider)
-runner.crawl(NWUlabSpider)
+process.crawl(NWUSpider)
+process.crawl(NWUlabSpider)
 
-d = runner.join()
-d.addBoth(lambda _: reactor.stop())
-
-reactor.run()
+process.start()

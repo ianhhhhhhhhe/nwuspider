@@ -79,6 +79,15 @@ ITEM_PIPELINES = {
     'nwu.pipelines.JsonWriterPipeline': 700,
 }
 
+# Mail Setting
+MAIL_FROM = 'nwuspider@localhost'
+MAIL_HOST = 'localhost'
+MAIL_PORT = 25
+MAIL_USER = None
+MAIL_PASS = None
+MAIL_TLS = False
+MAIL_SSL = False
+
 # Notification e-mail address
 MEMUSAGE_NOTIFY_MAIL = ['user@test.com']
 
