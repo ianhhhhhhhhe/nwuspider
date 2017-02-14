@@ -7,6 +7,6 @@
 
 import scrapy
 
-class NWUItem(scrapy.Item):
+class WebItem(scrapy.Item):
 	title = scrapy.Field()
 	link = scrapy.Field()

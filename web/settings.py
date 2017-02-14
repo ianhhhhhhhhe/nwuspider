@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for nwu project
+# Scrapy settings for web project
 #
 # For simplicity, this file contains only the most important settings by
 # default. All the other settings are documented here:
@@ -8,26 +8,26 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
-BOT_NAME = 'nwu'
+BOT_NAME = 'web'
 
-SPIDER_MODULES = ['nwu.spiders']
-NEWSPIDER_MODULE = 'nwu.spiders'
+SPIDER_MODULES = ['web.spiders']
+NEWSPIDER_MODULE = 'web.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'nwu (+http://www.yourdomain.com)'
+# USER_AGENT = 'web (+http://www.yourdomain.com)'
 
 # Cookies Config
 COOKIES_DEBUG = False
 COOKIES_ENABLED = False
 
 # Feed Export
-FEED_URI = 'nwu.csv'
+FEED_URI = 'web.csv'
 FEED_FORMAT = 'CSV'
 
 # Logging Config
 LOG_ENABLED = True
 LOG_ENCODING = 'utf-8'
-LOG_FILE = 'NWUSpider.out'
+LOG_FILE = 'webSpider.out'
 LOG_LEVEL = 'WARNING'
 LOG_DATEFORMAT = '%Y-%m-%d %H:%M:%S'
 LOG_STDOUT = True
@@ -58,13 +58,13 @@ LOG_STDOUT = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'nwu.middlewares.JdSpiderSpiderMiddleware': 543,
+#    'web.middlewares.JdSpiderSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'nwu.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'web.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -76,11 +76,11 @@ LOG_STDOUT = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'nwu.pipelines.JsonWriterPipeline': 700,
+    'web.pipelines.JsonWriterPipeline': 700,
 }
 
 # Mail Setting
-MAIL_FROM = 'nwuspider@localhost'
+MAIL_FROM = 'webspider@localhost'
 MAIL_HOST = 'localhost'
 MAIL_PORT = 25
 MAIL_USER = None
