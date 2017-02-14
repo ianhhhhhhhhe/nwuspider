@@ -10,14 +10,18 @@ import logging
 from nwu.spiders.nwu_spider import NWUSpider
 from nwu.spiders.nwulab_spider import NWUlabSpider
 
-configure_logging(get_project_settings())
-runner = CrawlerRunner(get_project_settings())
+def main():
+    configure_logging(get_project_settings())
+    runner = CrawlerRunner(get_project_settings())
 
-@defer.inlineCallbacks
-def crawl():
-    yield runner.crawl(NWUSpider)
-    yield runner.crawl(NWUlabSpider)
-    reactor.stop()
+    @defer.inlineCallbacks
+    def crawl():
+        yield runner.crawl(NWUSpider)
+        yield runner.crawl(NWUlabSpider)
+        reactor.stop()
 
-crawl()
-reactor.run()
+    crawl()
+    reactor.run()
+
+if __name__ == '__main__':
+    main()
