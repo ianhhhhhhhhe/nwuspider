@@ -4,14 +4,15 @@ from web.items import WebItem
 
 class webSpider(scrapy.Spider):
     name = "web"
-    allowed_domains = ["web.edu.cn"]
-    start_urls = [
-        'http://www.web.edu.cn/',
-        ]
+
+    def start_requests(self):
+        for url in self.settings.get('URLS'):
+            print(url)
+            yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        for sel in response.xpath('//*[@id="newslist"]/li'):
-            item = webItem()
-            item['title'] = sel.xpath('a/text()').extract()
-            item['link'] = sel.xpath('a/@href').extract()
+        for sel in response.xpath(self.settings.get('ROOT_PATH')):
+            item = WebItem()
+            item['title'] = sel.xpath(self.settings.get('ITEM_PATH')['TITLE']).extract()
+            item['link'] = sel.xpath(self.settings.get('ITEM_PATH')['LINK']).extract()
             yield item

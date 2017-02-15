@@ -7,8 +7,7 @@ from scrapy.utils.log import configure_logging
 
 import logging
 
-from nwu.spiders.nwu_spider import NWUSpider
-from nwu.spiders.nwulab_spider import NWUlabSpider
+from web.spiders.web_spider import webSpider
 
 def main():
     configure_logging(get_project_settings())
@@ -16,8 +15,7 @@ def main():
 
     @defer.inlineCallbacks
     def crawl():
-        yield runner.crawl(NWUSpider)
-        yield runner.crawl(NWUlabSpider)
+        yield runner.crawl(webSpider)
         reactor.stop()
 
     crawl()

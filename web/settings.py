@@ -1,24 +1,36 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for web project
+# Scrapy settings for some project
 #
-# For simplicity, this file contains only the most important settings by
-# default. All the other settings are documented here:
+# For simplicity, this file contains only settings considered important or
+# commonly used. You can find more settings consulting the documentation:
 #
 #     http://doc.scrapy.org/en/latest/topics/settings.html
-#
+#     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
+#     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'web'
 
 SPIDER_MODULES = ['web.spiders']
 NEWSPIDER_MODULE = 'web.spiders'
 
+URLS = [
+    'http://www.nwu.edu.cn/',
+]
+
+ROOT_PATH = '//*[@id="newslist"]/li'
+
+
+ITEM_PATH = {
+    'TITLE':'a/text()',
+    'LINK':'a/@href',
+}
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'web (+http://www.yourdomain.com)'
 
-# Cookies Config
-COOKIES_DEBUG = False
-COOKIES_ENABLED = False
+# Obey robots.txt rules
+ROBOTSTXT_OBEY = True
 
 # Feed Export
 FEED_URI = 'web.csv'
@@ -44,7 +56,7 @@ LOG_STDOUT = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -76,17 +88,8 @@ LOG_STDOUT = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'web.pipelines.JsonWriterPipeline': 700,
+    #'web.pipelines.JsonWriterPipeline': 700,
 }
-
-# Mail Setting
-MAIL_FROM = 'webspider@localhost'
-MAIL_HOST = 'localhost'
-MAIL_PORT = 25
-MAIL_USER = None
-MAIL_PASS = None
-MAIL_TLS = False
-MAIL_SSL = False
 
 # Notification e-mail address
 MEMUSAGE_NOTIFY_MAIL = ['user@test.com']
@@ -103,3 +106,11 @@ AUTOTHROTTLE_MAX_DELAY = 60
 AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = False
+
+# Enable and configure HTTP caching (disabled by default)
+# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
+#HTTPCACHE_ENABLED = True
+#HTTPCACHE_EXPIRATION_SECS = 0
+#HTTPCACHE_DIR = 'httpcache'
+#HTTPCACHE_IGNORE_HTTP_CODES = []
+#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
