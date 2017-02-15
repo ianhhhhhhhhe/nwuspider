@@ -16,14 +16,20 @@ NEWSPIDER_MODULE = 'web.spiders'
 
 URLS = [
     'http://www.nwu.edu.cn/',
+    'http://ipc.nwu.edu.cn/'
 ]
 
-ROOT_PATH = '//*[@id="newslist"]/li'
-
-
-ITEM_PATH = {
-    'TITLE':'a/text()',
-    'LINK':'a/@href',
+PATH = {
+    'http://www.nwu.edu.cn/': {
+        'ROOT':'//*[@id="newslist"]/li',
+        'TITLE':'a/text()',
+        'LINK':'a/@href',
+    },
+    'http://ipc.nwu.edu.cn/?do=index': {
+        'ROOT':'//*[@id="main"]/div/p',
+        'TITLE':'strong/a/text()',
+        'LINK':'strong/a/@href',
+    },
 }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -57,6 +63,7 @@ LOG_STDOUT = True
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
+COOKIES = {}
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -88,7 +95,8 @@ COOKIES_ENABLED = False
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    #'web.pipelines.JsonWriterPipeline': 700,
+    'web.pipelines.JsonWriterPipeline': 700,
+    #'web.pipelines.MongoWriterPipeline': 700,
 }
 
 # Notification e-mail address
