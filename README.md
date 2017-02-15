@@ -1,20 +1,75 @@
-# nwuspider
+# Website Spider
 
-## A small spider for northwest university china
+version 1.0
 
-Build on Scrapy
+## Basic Information
 
-Information Source:
+This spider is built for crawling news-link from websites.
 
-* [nwu.edu.cn](http://www.nwu.edu.cn)
-* [ipc.nwu.edu.cn](http://ipc.nwu.edu.cn)
+This spider is customizble, you can change your spider setting in ```web/settings.py```.
 
-## Requirement
+This spider support multi-website crawling, you can set the rules separately.
 
-Python 3.5 or above
-Scrapy 1.2.1 or above
+You can also set the way to store the information you crawled. You change it in ```web/settings.py```.
 
-## How to run
+## How to run my spider
 
-* ```scrapy crawl [spider_name]```
-* ```python main.py (Recommand)```
+You can use ```python main.py``` to run the menu
+
+## How to setup my spider
+
+You will find your spider settings in ```projectname/web/settings.py```
+
+There are settings you can change:
+
+### Basic Config
+
+> URLS(array):
+> > The website urls you want to crawl
+> 
+> PATH(dict):
+> > items' xpath you want to crawl
+> > 'ROOT': basic xpath of following information
+> > 'TITLE'
+> > 'LINK'
+
+### Items Feed
+
+> FEED_URI:
+> > One way to store the informations, you store them in ```.json``` ```.jl``` ```.csv``` ```.xml```
+> 
+> FEED_FORMAT:
+> > Choices: ```'json'``` ```'.jsonlines'``` ```'csv'``` ```'xml'``` ```'pickle'```
+>
+
+### Logging Config
+
+> LOG_ENABLED
+> 
+> LOG_ENCODING
+> 
+> LOG_FILE
+> 
+> LOG_LEVEL
+> 
+> LOG_DATEFORMAT
+> 
+> LOG_STDOUT
+
+### Cookies Config
+
+> COOKIES_ENABLED
+> 
+> COOKIES
+
+### Item Pipeline
+
+> ITEM_PIPELINES
+
+### Prevent Blocked
+
+> AUTOTHROTTLE_ENABLED
+> AUTOTHROTTLE_START_DELAY
+> AUTOTHROTTLE_MAX_DELAY
+> AUTOTHROTTLE_TARGET_CONCURRENCY
+> AUTOTHROTTLE_DEBUG
